@@ -119,6 +119,12 @@ main {
     grid-template-rows: auto auto;
     align-items: start;
   }
+  h1 {
+    font-size: 3rem;
+  }
+  h2 {
+    font-size: 2.7em;
+  }
   .card:nth-child(1) {
     grid-column: 1;
     align-self: center;
