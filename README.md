@@ -41,59 +41,86 @@ This is a solution to the [QR code component challenge on Frontend Mentor](https
 
 Working with CSS Grid & MediaQueries
 
-```css
+```sacss
+
+//-----COLOR SETTINGS ---------------------------------------
+
+// Defining color variables
+$colors: (
+  'red': hsl(0, 78%, 62%),
+  'turquoise': hsl(180, 62%, 55%),
+  'orange': hsl(34, 97%, 64%),
+  'blue': hsl(212, 86%, 64%),
+  'dark-blue-gray': hsl(234, 12%, 34%),
+  'light-blue-gray': hsl(229, 6%, 66%),
+  'white': hsl(0, 0%, 100%),
+  'black': hsl(0, 0%, 0%),
+);
+
+//------TYPOGRAPHY SETTINGS ---------------------------------
+
+//Mixing for Typography
+// Typography Mixin
+@mixin typography() {
+  h1 {
+    font-family: 'Poppins', serif;
+    font-weight: 700;
+    font-size: 1.7rem;
+    margin-top: -10px; // This pulls the h1 up towards any element above it
+    margin-bottom: 1rem;
+    color: color('dark-blue-gray'); // Apply the primary text color for headers
+    // background-color: bisque; // Background color for visibility
+  }
+
+  h2 {
+    font-family: 'Poppins', serif;
+    font-weight: 200;
+    font-size: 1.55em;
+
+    margin-bottom: 0; // No bottom margin to touch h1
+    letter-spacing: 0.05em; // Unified letter spacing
+    color: color('light-blue-gray'); // Specific color for h2
+    // background-color: aqua;
+  }
+
+  //------------ Media Queries for Desktop-----------------------------
+
+// Media Queries for Desktop
 @media (min-width: 450px) {
-  .sectionContainer {
-    width: 100%;
-    max-width: 1400px; /* This should be the max-width of the section container if needed */
-    margin: 0 auto; /* This centers the .sectionContainer */
-  }
-
   .gridContainer {
-    width: 100%;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr; /* Three equal columns */
-    grid-auto-rows: minmax(
-      300px,
-      auto
-    ); /* Sets the minimum and maximum height for all auto-generated grid rows.
-    Each row will be at least 300px tall and will grow as needed to fit the content. */
-    gap: 20px; /* Adjust the gap between grid items */
-    align-items: start; /* Aligns all items to the start of their respective rows */
-  }
-
-  .card1 {
-    grid-column: 1;
-    align-self: center; /* Vertically centers Card 4 in the third column */
-  }
-
-  .card2 {
-    grid-column: 2;
-    grid-row: 1; /* Card 2 in the first row of the second column */
-  }
-
-  .card3 {
-    grid-column: 2;
-    grid-row: 2; /* Card 3 in the second row of the second column */
-  }
-
-  .card4 {
-    grid-column: 3;
-    align-self: center; /* Vertically centers Card 4 in the third column */
+    grid-template-columns: 1fr 1fr 1fr; // Define three columns
+    grid-template-rows: auto auto; // Define two rows
+    align-items: start; // Align items to the start of their grid area
   }
 
   .card {
-    width: 100%; /*this needs to be 100% to be able to be centered horizontally*/
+    // Supervisor card takes the first column and spans two rows
+    &:nth-child(1) {
+      grid-column: 1;
+      align-self: center;
+      grid-row: span 2; // Spans two rows
+    }
+
+    // Team Builder card takes the second column, first row
+    &:nth-child(2) {
+      grid-column: 2;
+      grid-row: 1; // First row of the second column
+    }
+
+    // Karma card takes the second column, second row
+    &:nth-child(3) {
+      grid-column: 2;
+      grid-row: 2; // Second row of the second column
+    }
+
+    // Calculator card takes the third column and spans two rows
+    &:nth-child(4) {
+      grid-column: 3;
+      align-self: center;
+      grid-row: span 2; // Spans two rows
+    }
   }
-
-  /*-------This next code extends the element to cover two grid rows. This is useful for vertically centering
-   or giving more space to an item in a grid layout. 'auto' starts the span at the next available row.
-   This CSS rule means that any element with the class .span-row will occupy two rows in the grid. The auto part indicates that the spanning should start at the row where the element would naturally be placed based on the flow of the document and grid placement rules. The span 2 part tells the grid layout that the element should span across two rows starting from where it begins. This is particularly useful for creating layouts where certain elements need to stand out by covering more vertical space. Thanks to the fixed height the card doesn't stretched.------- */
-
-  .span-row {
-    grid-row: auto / span 2;
-  }
-
+}
 ```
 
 ### Continued development
