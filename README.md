@@ -32,10 +32,13 @@ This is a solution to the [Four card feature section challenge on Frontend Mento
 
 ### Built with
 
-- Semantic HTML5 markup
-- CSS custom properties
-- Flexbox
-- Mobile-first workflow
+-Semantic HTML5 markup
+-CSS custom properties
+-Flexbox
+-Sass(SCSS)
+-Mobile-first workflow
+-Git/GitHub
+-PowerShell Command line
 
 ### What I learned
 
