@@ -182,6 +182,7 @@ main {
     font-size: 2.7em;
   }
   .card {
+    margin-bottom: 0rem;
     // Supervisor card takes the first column and spans two rows
     &:nth-child(1) {
       grid-column: 1;
